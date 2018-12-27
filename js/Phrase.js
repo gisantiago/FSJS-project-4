@@ -15,14 +15,18 @@
         
         for(var i = 0; i < phrase.length; i++) {
             if(phrase[i] !== " ") {
-              var li = `<li class="letter">${phrase[i]}</li>`;
-              document.querySelector('#phrase ul').append(li);  
+                var li = document.createElement('li');
+                li.setAttribute('class', 'letter');
+                li.textContent = `${phrase[i]}`;
+                document.querySelector('#phrase ul').append(li);  
             } else {
-                var li = `<li class="space">${phrase[i]}</li>`;
+                var li = document.createElement('li');
+                li.setAttribute('class', 'space');
+                li.textContent = `${phrase[i]}`;
                 document.querySelector('#phrase ul').append(li); 
             }
         }
-        console.log(phrase); // for testing purposes...
+       //console.log(phrase); // for testing purposes...
     }
 
      checkLetter() {

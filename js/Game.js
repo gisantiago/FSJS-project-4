@@ -34,6 +34,17 @@
         return randPhrase;
     };
 
+    /**
+    * Begins game by selecting a random phrase and displaying it to user
+    */
+    startGame() {
+        const overlayDIV = document.querySelector('#overlay');
+        overlayDIV.style.display = "none";
+
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay();
+    };
+
  }
 
  
