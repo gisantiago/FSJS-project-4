@@ -2,6 +2,8 @@
  * Project 4 - OOP Game App
  * Game.js */
 
+
+
  class Game {
      constructor() {
         this.missed = 0;
@@ -40,9 +42,84 @@
     startGame() {
         const overlayDIV = document.querySelector('#overlay');
         overlayDIV.style.display = "none";
+        
 
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
+        this.missed = 0;
+        console.log(this.activePhrase);
+    };
+
+    /**
+    * Checks for winning move
+    * @return {boolean} True if game has been won, false if game wasn't won
+    */
+    checkForWin() {
+
+        const letterClass = document.querySelectorAll('.letter').length;
+        const showClass = document.querySelectorAll('.letter.show').length;
+
+        if (letterClass === showClass) {
+            return true;
+        }
+    };
+
+    /**
+    * Increases the value of the missed property
+    * Removes a life from the scoreboard
+    * Checks if player has remaining lives and ends game if player is out
+    */
+    removeLife() {
+        this.missed ++;
+        const hearts = document.querySelectorAll('.tries');
+   
+        hearts[5 - this.missed].firstElementChild.src = "images/lostHeart.png";
+            
+        if (this.missed === 5) {
+            this.gameOver(false);
+        }
+    };
+
+    /**
+    * Displays game over message
+    * @param {boolean} gameWon - Whether or not the user won the game
+    */
+    gameOver(gameWon) {
+        const overlayDIV = document.querySelector('#overlay');
+        const h1 = document.querySelector('#overlay h1');
+        overlayDIV.style.display = "block";
+
+        if (gameWon === false) {
+            overlayDIV.className = 'lose';
+            h1.textContent = "Sorry you lost. Try again...";
+        } else {
+            overlayDIV.className = 'win';
+            h1.textContent = "Great Job! You Won.";
+        }
+    };
+
+    /**
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element
+    */
+    
+    
+
+    handleInteraction(button) {
+        const letter = button.textContent;
+       
+        button.disabled = true;
+
+        if (this.activePhrase.checkLetter(letter)){
+            button.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(letter);
+            if (this.checkForWin()) {
+                this.gameOver();
+            }
+        } else {
+            button.classList.add('wrong');
+            this.removeLife();
+        }
     };
 
  }

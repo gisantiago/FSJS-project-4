@@ -45,5 +45,50 @@
 // game.startGame();
 // console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 
+const image = () => {
+    const hearts = document.querySelectorAll('.tries');
+    for (var i = 0; i < hearts.length; i++) {
+        hearts[i].firstElementChild.src = "images/liveHeart.png";
+    }
+}
 
 /*** Step 8 */
+var game = new Game();
+const rstButton = document.querySelector('#btn__reset');
+
+rstButton.addEventListener('click', () => {
+    
+    // remove all "li" elements from the Phrase's "ul" element
+    const ul = document.querySelector('ul')
+    const li = ul.getElementsByTagName('li');
+    const button = document.querySelectorAll('button');
+   
+    if (ul.hasChildNodes()) {
+        while(li.length > 0) {
+            ul.removeChild(li[0]);
+        }
+    }
+    for (var i = 0; i < button.length; i++) {
+        button[i].disabled = false;
+        button[i].classList.remove('chosen', 'wrong');
+    }
+
+    image();
+    
+    game.startGame();
+    
+});
+
+/*** Step 10 */
+
+document.addEventListener('click', function (e) {
+    if(e.target.matches('.key')) {
+        game.handleInteraction(e.target);
+    }
+});
+
+
+
+
+
+/*** Step 11 */

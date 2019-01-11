@@ -29,11 +29,31 @@
        //console.log(phrase); // for testing purposes...
     }
 
-     checkLetter() {
+    /**
+    * Checks if passed letter is in phrase
+    * @param (string) letter - Letter to check
+    */
+    checkLetter(letter) {
+        const phrase = this.phrase.split('');    
+        if (phrase.includes(letter)) {
+            return true;
+        } else {
+            return false;
+        }
+    };
 
-     }
-
-     showMatchedLetter() {
-         
-     }
+    /**
+    * Displays passed letter on screen after a match is found
+    * @param (string) letter - Letter to display
+    */
+    showMatchedLetter(letter) {
+        const li = document.getElementsByTagName('li');
+        for(var i = 0; i < li.length; i++) {
+            if (li[i].textContent === letter) {
+                li[i].classList.add("show");
+            }
+        }
+    };
  }
+
+ 
