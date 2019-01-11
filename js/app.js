@@ -44,6 +44,9 @@
 // const game = new Game();
 // game.startGame();
 // console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+var game = new Game();
+const rstButton = document.querySelector('#btn__reset');
+const buttons = document.querySelectorAll('button');
 
 const image = () => {
     const hearts = document.querySelectorAll('.tries');
@@ -53,8 +56,7 @@ const image = () => {
 }
 
 /*** Step 8 */
-var game = new Game();
-const rstButton = document.querySelector('#btn__reset');
+
 
 rstButton.addEventListener('click', () => {
     
@@ -81,14 +83,17 @@ rstButton.addEventListener('click', () => {
 
 /*** Step 10 */
 
-document.addEventListener('click', function (e) {
+document.addEventListener('click', (e) => {
     if(e.target.matches('.key')) {
         game.handleInteraction(e.target);
+        console.log(e.target);
     }
 });
 
-
-
-
-
-/*** Step 11 */
+document.addEventListener('keypress', (e) => {
+    for (var i = 0; i < buttons.length; i++) {
+        if (e.key === buttons[i].textContent && !buttons[i].classList.contains('wrong')) {
+            game.handleInteraction(buttons[i]);
+        }
+    }
+});
