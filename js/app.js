@@ -20,7 +20,7 @@ const image = () => {
 
 /*** 
  * The 'rstButton' start the game the first time the page is loaded. 
- * It also restart the game after the user finish (win/lose) the game. 
+ * It also restarts the game after the user finish (win/lose) the game. 
 ***/
 
 
