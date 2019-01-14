@@ -37,17 +37,16 @@
     };
 
     /**
-    * Begins game by selecting a random phrase and displaying it to user
+    * Begins the game by selecting a random phrase and displaying it to user
     */
     startGame() {
         const overlayDIV = document.querySelector('#overlay');
         overlayDIV.style.display = "none";
-        
 
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
         this.missed = 0;
-        console.log(this.activePhrase);
+        //console.log(this.activePhrase); **** for testing purposes ****
     };
 
     /**
@@ -65,8 +64,8 @@
     };
 
     /**
-    * Increases the value of the missed property
-    * Removes a life from the scoreboard
+    * Increases the value of the missed property (stores value in the missed property)
+    * Removes a life from the scoreboard (replace a liveHeart.png with lostHeart.png)
     * Checks if player has remaining lives and ends game if player is out
     */
     removeLife() {
@@ -102,9 +101,6 @@
     * Handles onscreen keyboard button clicks
     * @param (HTMLButtonElement) button - The clicked button element
     */
-    
-    
-
     handleInteraction(button) {
         const letter = button.textContent;
        
