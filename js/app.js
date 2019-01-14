@@ -3,51 +3,14 @@
 * app.js */
 
 
-
-/*** Step 2 */
-//  const phrase = new Phrase();
-//  const game = new Game();
-
-
-/*** Step 3 */
-//  const phrase = new Phrase('LIFE is like a box of chocolates');
-//  console.log(`Phrase - phrase: ${phrase.phrase}`);
-
-/*** Step 4 */
-// const game = new Game();
-// game.phrases.forEach((phrase, index) => {
-//     console.log(`Phrase ${index} - phrase: ${phrase.phrase}`);
-//     });
-
-
-/*** Step 5 */
-// const logPhrase = (phrase) => {
-//     console.log(`Phrase - phrase: `, phrase.phrase);
-// }
-
-// const game = new Game();
-
-// logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());
-// logPhrase(game.getRandomPhrase());
-
-/*** Step 6 */
-// const game = new Game();
-// game.getRandomPhrase().addPhraseToDisplay();
-
-/*** Step 7 */
-// const game = new Game();
-// game.startGame();
-// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+// Global Variables
 var game = new Game();
 const rstButton = document.querySelector('#btn__reset');
 const buttons = document.querySelectorAll('button');
 
+/**
+ * the 'image' function loops over the scoreboard li and applies the "liveHeart.png" image over all the li's
+**/
 const image = () => {
     const hearts = document.querySelectorAll('.tries');
     for (var i = 0; i < hearts.length; i++) {
@@ -55,16 +18,19 @@ const image = () => {
     }
 }
 
-/*** Step 8 */
+/*** 
+ * The 'rstButton' start the game the first time the page is loaded. 
+ * It also restart the game after the user finish (win/lose) the game. 
+***/
 
 
 rstButton.addEventListener('click', () => {
     
-    // remove all "li" elements from the Phrase's "ul" element
     const ul = document.querySelector('ul')
     const li = ul.getElementsByTagName('li');
     const button = document.querySelectorAll('button');
    
+    // remove all "li" elements from the Phrase's "ul" element after a game has reached the 'GameOver' stage. 
     if (ul.hasChildNodes()) {
         while(li.length > 0) {
             ul.removeChild(li[0]);
@@ -76,12 +42,13 @@ rstButton.addEventListener('click', () => {
     }
 
     image();
-    
     game.startGame();
-    
 });
 
-/*** Step 10 */
+/***
+ * This event listener calls the 'handleInteraction' in the Game class, 
+ * based on the user clicks (aka event.target). 
+***/
 
 document.addEventListener('click', (e) => {
     if(e.target.matches('.key')) {
@@ -89,6 +56,11 @@ document.addEventListener('click', (e) => {
         console.log(e.target);
     }
 });
+
+/***
+ * This event listener calls the 'handleInteraction' in the Game class, 
+ * based on the user's keyboard selection (aka event.key). 
+***/
 
 document.addEventListener('keypress', (e) => {
     for (var i = 0; i < buttons.length; i++) {
