@@ -26,7 +26,6 @@
                 document.querySelector('#phrase ul').append(li); 
             }
         }
-       //console.log(phrase); // for testing purposes...
     }
 
     /**
