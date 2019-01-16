@@ -13,9 +13,10 @@ const buttons = document.querySelectorAll('button');
 **/
 const image = () => {
     const hearts = document.querySelectorAll('.tries');
-    for (var i = 0; i < hearts.length; i++) {
-        hearts[i].firstElementChild.src = "images/liveHeart.png";
-    }
+    hearts.forEach(heart => heart.firstElementChild.src = "images/liveHeart.png");
+    // for (var i = 0; i < hearts.length; i++) {
+    //     hearts[i].firstElementChild.src = "images/liveHeart.png";
+    // }
 }
 
 /*** 
@@ -36,10 +37,14 @@ rstButton.addEventListener('click', () => {
             ul.removeChild(li[0]);
         }
     }
-    for (var i = 0; i < button.length; i++) {
-        button[i].disabled = false;
-        button[i].classList.remove('chosen', 'wrong');
-    }
+    button.forEach(button => {
+        button.disabled = false;
+        button.classList.remove('chosen', 'wrong');
+    })
+    // for (var i = 0; i < button.length; i++) {
+    //     button[i].disabled = false;
+    //     button[i].classList.remove('chosen', 'wrong');
+    // }
 
     image();
     game.startGame();
@@ -63,9 +68,15 @@ document.addEventListener('click', (e) => {
 ***/
 
 document.addEventListener('keypress', (e) => {
-    for (var i = 0; i < buttons.length; i++) {
-        if (e.key === buttons[i].textContent && !buttons[i].classList.contains('wrong')) {
-            game.handleInteraction(buttons[i]);
+
+    buttons.forEach( button => {
+        if (e.key === button.textContent && !button.classList.contains('wrong')) {
+            game.handleInteraction(button);
         }
-    }
+    });
+    // for (var i = 0; i < buttons.length; i++) {
+    //     if (e.key === buttons[i].textContent && !buttons[i].classList.contains('wrong')) {
+    //         game.handleInteraction(buttons[i]);
+    //     }
+    // }
 });

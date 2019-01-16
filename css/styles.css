@@ -46,6 +46,14 @@ h1 {
   font-size: 30px;
 }
 
+h3 {
+  display: inline;
+}
+
+th, td {
+  align-content: center;
+}
+
 button {
   margin: 6px;
   border: 1px solid transparent;
@@ -63,6 +71,13 @@ button {
 #btn__reset {
 	width: 200px;
 	margin: 0 auto;
+}
+
+.score {
+  display: inline;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
 }
 
 .main-container {

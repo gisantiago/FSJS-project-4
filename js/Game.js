@@ -9,6 +9,8 @@
         this.missed = 0;
         this.phrases = this.createPhrases();
         this.activePhrase = null;
+        this.wins = 0;
+        this.losses = 0;
     }
 
     /**
@@ -88,12 +90,19 @@
         const h1 = document.querySelector('#overlay h1');
         overlayDIV.style.display = "block";
 
+        const won = document.querySelector('#wins');
+        const lost = document.querySelector('#losses');
+
         if (gameWon === false) {
             overlayDIV.className = 'lose';
             h1.textContent = "Sorry you lost. Try again...";
+            this.losses += 1;
+            lost.textContent = this.losses;
         } else {
             overlayDIV.className = 'win';
             h1.textContent = "Great Job! You Won.";
+            this.wins += 1;
+            won.textContent = this.wins;
         }
     };
 
